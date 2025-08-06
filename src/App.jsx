@@ -1,18 +1,13 @@
 import React, { useState } from 'react';
-import PasswordForm from './components/PasswordForm';
-import LetterContent from './components/LetterContent';
+import PasswordGate from './components/PasswordGate';
+import LoveLetter from './components/LoveLetter';
 import './styles.css';
 
 function App() {
-  const [isAuthorized, setIsAuthorized] = useState(false);
-
+  const [isUnlocked, setIsUnlocked] = useState(false);
   return (
     <div className="app-container">
-      {isAuthorized ? (
-        <LetterContent />
-      ) : (
-        <PasswordForm onSuccess={() => setIsAuthorized(true)} />
-      )}
+      {isUnlocked ? <LoveLetter /> : <PasswordGate onUnlock={() => setIsUnlocked(true)} />}
     </div>
   );
 }
